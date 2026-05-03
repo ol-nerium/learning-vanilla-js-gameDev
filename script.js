@@ -1,9 +1,6 @@
-const canvas = document.getElementById("canvas1");
-const ctx = canvas.getContext("2d");
 // setting correct scaling (by default it's 300x150px):
-const CANVAS_WIDTH = (canvas.width = 800);
-const CANVAS_HEIGHT = (canvas.height = 700);
-let gameSpeed = 4;
+
+let gameSpeed = 2;
 // let gameFrame = 0; // another metod, but with "ragged" bug when changing speed by range
 
 const backgroundLayer1 = new Image();
@@ -19,22 +16,37 @@ backgroundLayer5.src = "./layers/layer-5.png";
 
 const sound = new Audio();
 sound.src = "jam_music.wav";
+sound.loop = true;
 
 // all code should run when page is propperly loaded and available:
-window.addEventListener("load", function () {
+window.addEventListener("load", async function () {
+  const canvas = document.getElementById("canvas1");
+  const ctx = canvas.getContext("2d");
+  const CANVAS_WIDTH = (canvas.width = 800);
+  const CANVAS_HEIGHT = (canvas.height = 600);
+
   const slider = document.getElementById("slider");
   slider.value = gameSpeed;
+
   const showGameSpeed = document.getElementById("showGameSpeed");
   showGameSpeed.innerHTML = gameSpeed;
+
   slider.addEventListener("change", function (e) {
     gameSpeed = e.target.value;
     showGameSpeed.innerHTML = gameSpeed;
   });
 
-  let x = 0;
-  sound.play();
+  document.querySelector("input").addEventListener("change", () => {
+    // sound.playbackRate = 1;
+    if (gameSpeed === "0") {
+      sound.pause();
+      return;
+    }
 
-  // let x2 = 2400;
+    sound.playbackRate = 0.9 + gameSpeed / 10;
+    sound.currentTime = sound.currentTime === 0 ? 3 : sound.currentTime;
+    sound.play();
+  });
 
   class Layer {
     constructor(image, speedModifier) {
@@ -62,7 +74,7 @@ window.addEventListener("load", function () {
         this.x + this.width,
         this.y,
         this.width,
-        this.height
+        this.height,
       );
     }
   }
@@ -83,7 +95,7 @@ window.addEventListener("load", function () {
     });
     // gameFrame--; // see 7 line
 
-    // // old more 'spagetti-code' method:
+    // // old more like 'spagetti-code' method:
     // ctx.drawImage(backgroundLayer4, x, 0);
     // if (x < -2400) x = 2400 + x2 - gameSpeed;
     // x -= gameSpeed;
