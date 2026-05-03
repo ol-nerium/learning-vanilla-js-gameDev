@@ -173,3 +173,25 @@ label {
   color: white;
   text-align: center;
 }
+
+.stopBtn {
+  padding: 1rem;
+  font-size: 1.2rem;
+  width: 150px;
+  background-color: #eab6b6;
+  border: transparent;
+  border-radius: 1rem;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -330%);
+  opacity: 0.75;
+  transition: opacity 0.5s ease-in-out;
+
+  cursor: pointer;
+}
+
+.stopBtn:hover,
+.stopBtn:active {
+  opacity: 1;
+}

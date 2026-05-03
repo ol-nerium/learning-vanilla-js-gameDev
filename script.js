@@ -31,8 +31,19 @@ window.addEventListener("load", async function () {
   const showGameSpeed = document.getElementById("showGameSpeed");
   showGameSpeed.innerHTML = gameSpeed;
 
+  const stopBtn = document.querySelector(".stopBtn");
+
   slider.addEventListener("change", function (e) {
     gameSpeed = e.target.value;
+    showGameSpeed.innerHTML = gameSpeed;
+  });
+
+  console.log(stopBtn);
+  stopBtn.addEventListener("click", () => {
+    sound.pause();
+    gameSpeed = 0;
+
+    slider.value = gameSpeed;
     showGameSpeed.innerHTML = gameSpeed;
   });
 
