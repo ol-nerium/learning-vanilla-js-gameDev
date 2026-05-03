@@ -181,9 +181,9 @@ label {
   border: transparent;
   border-radius: 1rem;
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -330%);
+  transform: translate(-50%, 50%);
   opacity: 0.5;
   transition: opacity 0.5s ease-in-out;
 
