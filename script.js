@@ -25,6 +25,8 @@ window.addEventListener("load", async function () {
   const CANVAS_WIDTH = (canvas.width = 800);
   const CANVAS_HEIGHT = (canvas.height = 600);
 
+  console.log(CANVAS_WIDTH, CANVAS_HEIGHT);
+
   const slider = document.getElementById("slider");
   slider.value = gameSpeed;
 
