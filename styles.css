@@ -1,10 +1,7 @@
 body {
   background: black;
+  overflow-x: hidden;
 }
-
-/* audio {
-  display: none;
-} */
 
 #container {
   position: absolute;
@@ -22,6 +19,20 @@ body {
 
   width: 800px;
   height: 600px;
+}
+
+@media screen and (max-width: 600px) {
+  #container {
+    width: 400px;
+  }
+  body {
+    max-width: 500px;
+  }
+
+  #canvas1 {
+    width: 400px;
+    height: 300px;
+  }
 }
 
 #slider {
