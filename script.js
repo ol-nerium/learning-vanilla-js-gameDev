@@ -25,8 +25,6 @@ window.addEventListener("load", async function () {
   const CANVAS_WIDTH = (canvas.width = 800);
   const CANVAS_HEIGHT = (canvas.height = 600);
 
-  console.log(CANVAS_WIDTH, CANVAS_HEIGHT);
-
   const slider = document.getElementById("slider");
   slider.value = gameSpeed;
 
@@ -40,13 +38,11 @@ window.addEventListener("load", async function () {
     showGameSpeed.innerHTML = gameSpeed;
   });
 
-  console.log(stopBtn);
   let prevSpeed = gameSpeed;
   stopBtn.addEventListener("click", () => {
     if (stopBtn.innerHTML === "choose speed") return;
 
     if (stopBtn.innerHTML === "play") {
-      console.log(prevSpeed);
       gameSpeed = prevSpeed;
       stopBtn.innerHTML = "stop";
       slider.value = gameSpeed;
@@ -57,8 +53,6 @@ window.addEventListener("load", async function () {
     }
 
     if (stopBtn.innerHTML === "stop") {
-      console.log("stop btn clicked");
-      // sound.pause();
       prevSpeed = gameSpeed;
       gameSpeed = 0;
 
