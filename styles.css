@@ -167,7 +167,6 @@ input[type="range"]:focus::-ms-fill-upper {
 
 label {
   font-size: 2rem;
-  outline: 1px solid red;
   display: block;
   width: 100%;
   color: white;
@@ -177,7 +176,7 @@ label {
 .stopBtn {
   padding: 1rem;
   font-size: 1.2rem;
-  width: 150px;
+  width: 250px;
   background-color: #eab6b6;
   border: transparent;
   border-radius: 1rem;
@@ -185,7 +184,7 @@ label {
   top: 100%;
   left: 50%;
   transform: translate(-50%, -330%);
-  opacity: 0.75;
+  opacity: 0.5;
   transition: opacity 0.5s ease-in-out;
 
   cursor: pointer;

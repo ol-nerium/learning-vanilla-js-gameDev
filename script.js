@@ -39,25 +39,52 @@ window.addEventListener("load", async function () {
   });
 
   console.log(stopBtn);
+  let prevSpeed = gameSpeed;
   stopBtn.addEventListener("click", () => {
-    sound.pause();
-    gameSpeed = 0;
+    if (stopBtn.innerHTML === "choose speed") return;
 
-    slider.value = gameSpeed;
-    showGameSpeed.innerHTML = gameSpeed;
-  });
+    if (stopBtn.innerHTML === "play") {
+      console.log(prevSpeed);
+      gameSpeed = prevSpeed;
+      stopBtn.innerHTML = "stop";
+      slider.value = gameSpeed;
+      showGameSpeed.innerHTML = gameSpeed;
 
-  document.querySelector("input").addEventListener("change", () => {
-    // sound.playbackRate = 1;
-    if (gameSpeed === "0") {
+      playSound();
+      return;
+    }
+
+    if (stopBtn.innerHTML === "stop") {
+      console.log("stop btn clicked");
+      // sound.pause();
+      prevSpeed = gameSpeed;
+      gameSpeed = 0;
+
+      slider.value = gameSpeed;
+      showGameSpeed.innerHTML = gameSpeed;
+      stopBtn.innerHTML = "play";
+
       sound.pause();
       return;
     }
+  });
+
+  document.querySelector("input").addEventListener("change", playSound);
+
+  function playSound() {
+    if (gameSpeed === "0") {
+      // prevSpeed=
+      sound.pause();
+      stopBtn.innerHTML = "choose speed";
+      return;
+    }
+
+    stopBtn.innerHTML = "stop";
 
     sound.playbackRate = 0.9 + gameSpeed / 10;
     sound.currentTime = sound.currentTime === 0 ? 3 : sound.currentTime;
     sound.play();
-  });
+  }
 
   class Layer {
     constructor(image, speedModifier) {
