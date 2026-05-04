@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: 1px solid red;
-}
+} */
 
 *,
 *::after,
@@ -248,7 +248,7 @@ label {
 
   body {
     position: relative;
-    transform: scale(0.6);
+    transform: scale(0.85);
   }
 }
 
