@@ -19,7 +19,7 @@ sound.src = "jam_music.wav";
 sound.loop = true;
 
 // all code should run when page is propperly loaded and available:
-window.addEventListener("load", async function () {
+window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
   const CANVAS_WIDTH = (canvas.width = 800);
@@ -65,11 +65,10 @@ window.addEventListener("load", async function () {
     }
   });
 
-  document.querySelector("input").addEventListener("change", playSound);
+  document.querySelector(".slider").addEventListener("change", playSound);
 
   function playSound() {
     if (gameSpeed === "0") {
-      // prevSpeed=
       sound.pause();
       stopBtn.innerHTML = "choose speed";
       return;
@@ -77,7 +76,7 @@ window.addEventListener("load", async function () {
 
     stopBtn.innerHTML = "stop";
 
-    sound.playbackRate = 0.9 + gameSpeed / 10;
+    sound.playbackRate = 0.9 + gameSpeed / 15;
     sound.currentTime = sound.currentTime === 0 ? 3 : sound.currentTime;
     sound.play();
   }
