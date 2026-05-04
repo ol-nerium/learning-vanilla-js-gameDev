@@ -180,6 +180,7 @@ label {
 }
 
 .stopBtn {
+  text-transform: capitalize;
   padding: 1rem;
   font-size: 2rem;
   width: 250px;
@@ -195,6 +196,33 @@ label {
   transition: opacity 0.5s ease-in-out;
 
   cursor: pointer;
+  animation: blink 3s linear 1.5s infinite;
+}
+
+.stopBtn::after {
+  content: "!";
+  /* color: #ea2020; */
+
+  animation: blink 3s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    /* opacity: 0; */
+    color: #ea2020;
+  }
+  20% {
+    /* opacity: 50%; */
+    color: #d620ea;
+  }
+  50% {
+    /* opacity: 70%; */
+    color: #ea8520;
+  }
+  70% {
+    /* opacity: 100%; */
+    color: #4520ea;
+  }
 }
 
 .stopBtn:hover,

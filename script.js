@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
     if (stopBtn.innerHTML === "choose speed") return;
 
     if (stopBtn.innerHTML === "play") {
-      gameSpeed = prevSpeed;
+      gameSpeed = prevSpeed > 0 ? prevSpeed : 2;
       stopBtn.innerHTML = "stop";
       slider.value = gameSpeed;
       showGameSpeed.innerHTML = gameSpeed;
